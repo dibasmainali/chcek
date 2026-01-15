@@ -74,7 +74,7 @@
     <div class="container">
         <div class="header">
             <h1>Set A for exam practice</h1>
-            <p>80 Multiple Choice Questions</p>
+            <p>96 Multiple Choice Questions</p>
         </div>
         
         <div class="qa-list" id="qa-container"></div>
@@ -563,7 +563,52 @@ Map<String, Double> scores;
 •	private
 •	protected
 •	default (no keyword)
-•	public`;
+•	public
+
+81. Is it possible to write a meaningful Java class of an executable Java program that absolutely does not use any Java API at all?
+
+82. Does the Java API promote Java's philosophy of Code Reuse?
+
+83. What is the term for using two methods in the same Java class that take different ordered list of parameter types?
+
+84. Do the two methods public void sum(int[] nums) and private int sum(int[] nums) have the same signature?
+
+85. Which of the following main methods could be an entry point into a Java program?
+
+86. Can a Java program have more than one main method?
+
+87. Which of the following defines the state of a Java object?
+
+88. Which of the following defines the behavior of a Java object?
+
+89. A recommended practice is to use the following for the name of a class?
+
+90. Is it necessary to decide every method of every class before starting to write a Java program?
+
+91. Supposing a method of a class is never used in a Java program. What will happen?
+
+92. Suppose we pass a Java object to System.out.println(). How does the program decide how to convert the object to text for printing?
+
+93. What will the following code output?
+import java.util.Arrays;
+public class Runner {
+    public static void main(String[] args) {
+        int[] nums = {2, 4, 6, 8};
+        System.out.println(Arrays.toString(nums));
+    }
+}
+
+94. What will the following code output?
+public class Runner {
+    public static void main(String[] args) {
+        int[] nums = {2, 4, 6, 8};
+        System.out.println(nums);
+    }
+}
+
+95. Which of the following names for a class violates The Standard Java Naming Convention?
+
+96. Which of the following is a valid Java identifier?`;
 
         function parseQuestions(text) {
             const questions = [];
@@ -615,7 +660,7 @@ Map<String, Double> scores;
             1: "They enforce visibility rules for attributes and methods",
             2: "It restricts access to within the same class only",
             3: "while",
-            4: "a,b,c,d,e,",
+            4: "a,b,c,d,e",
             5: "void",
             6: "int",
             7: "The class that extends another class",
@@ -673,9 +718,9 @@ Map<String, Double> scores;
             59: "final",
             60: "Map",
             61: "private",
-            62: "JVM",
+            62: "Bytecode",
             63: "do-while",
-            64: "all of the above",
+            64: "try-catch",
             65: "throws",
             66: "boolean",
             67: "TreeMap",
@@ -691,7 +736,23 @@ Map<String, Double> scores;
             77: "collect()",
             78: "break",
             79: "Interfaces",
-            80: "default (no keyword)"
+            80: "default (no keyword)",
+            81: "No. Because any custom class we write at least implicitly extends the Object class.",
+            82: "Yes. It strongly promotes the philosophy through an Extensive Library and Object-oriented Design Principles.",
+            83: "Method Overloading.",
+            84: "Yes. A method's signature consists only of it name, which is \"sum\" for both, and ordered list of parameters, which is int[] for both.",
+            85: "public static void main(String[] args) { System.out.println(\"Hello World.\"); }",
+            86: "Yes. As long as one of them has the declaration public static void main(String[] ) and the other method with the name \"main\" does not have the parameter of type String[].",
+            87: "The attributes in the class of the object.",
+            88: "The methods in the class of the object.",
+            89: "A Singular Noun.",
+            90: "No. We can begin by addressing the primary responsibilities of each class and gradually evolve the program.",
+            91: "Nothing. Not every method of every class needs to be called during execution of any Java program.",
+            92: "The public String toString() method, of the java.lang.Object class or overridden in the Java object's own class, is called to obtain a String representation of the object.",
+            93: "[2, 4, 6, 8]",
+            94: "The String \"[I@\" concatenated with the hexadecimal representation of the array's hash code.",
+            95: "employeeSalary",
+            96: "employeeName1"
         };
 
         function renderQuestions() {
@@ -730,7 +791,4 @@ Map<String, Double> scores;
         renderQuestions();
     </script>
 </body>
-
 </html>
-
-
