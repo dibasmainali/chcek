@@ -5,63 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Java MCQ Quiz</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
             padding: 20px;
+            background: #f5f5f5;
         }
-        .question {
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 5px;
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .options {
-            margin-left: 20px;
+        h1 {
+            margin-bottom: 10px;
+            color: #333;
         }
-        .option {
-            margin-bottom: 5px;
+        .header {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
         }
-        button {
-            padding: 10px 20px;
-            margin: 10px 5px;
-            cursor: pointer;
+        .qa-list {
+            max-width: 900px;
+            margin: 0 auto;
         }
-        #result {
-            margin-top: 20px;
+        .qa-pair {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background: #fafafa;
+        }
+        .q-number {
             font-weight: bold;
+            color: #555;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .question-text {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+        .answer-label {
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+        .answer-text {
+            color: #2d5016;
+            line-height: 1.6;
+            padding-left: 10px;
+            font-size: 15px;
         }
     </style>
 </head>
 <body>
-    <h1>Set A for exam practice</h1>
-    <p>80 Multiple Choice Questions</p>
-    <div id="quiz-container"></div>
-    <button id="submit-btn">Submit</button>
-    <div id="result"></div>
-    <p id="questions">
-        Set A for exam practice
-80 Multiple Choice Questions
-________________________________________
-1. What is the purpose of the public, private, and protected keywords within Java?
+    <div class="container">
+        <div class="header">
+            <h1>Set A for exam practice</h1>
+            <p>80 Multiple Choice Questions</p>
+        </div>
+        
+        <div class="qa-list" id="qa-container"></div>
+    </div>
+
+    <script>
+        const questionsData = `1. What is the purpose of the public, private, and protected keywords within Java?
 •	They do not do anything
 •	They act as a constructor
 •	They enforce visibility rules for attributes and methods
 •	They allow programmers to make their code available to the public via a website
-________________________________________
+
 2. Which of the following best describes the use of the private keyword in Java?
 •	It allows access from any class in any package
 •	It restricts access to within the same package only
 •	It restricts access to within the same class only
 •	It allows access through inheritance only
-________________________________________
+
 3. Which of the following is used to implement iteration?
 •	while
 •	break
 •	println
 •	if
-________________________________________
+
 4. What would be the output of the following program?
 for(char c='a'; c < 'f'; c++)
     System.out.println(c + ", ");
@@ -69,438 +106,628 @@ for(char c='a'; c < 'f'; c++)
 •	a,b,c,d,e,
 •	a,b,c,d,e
 •	e,d,c,b,a,
-________________________________________
+
 5. What keyword must be specified before a method name if that method does not return a value?
 •	abstract
 •	void
 •	static
 •	final
-________________________________________
+
 6. Which of the following data types is used to store a whole number?
 •	double
 •	float
 •	boolean
 •	int
-________________________________________
-7. In inheritance, what does the term “sub-class” refer to?
+
+7. In inheritance, what does the term "sub-class" refer to?
 •	A class that must be extended
 •	The class that extends another class
 •	A class that cannot be extended
 •	The class that is extended by another class
-________________________________________
+
 8. When working with methods in Java, which statement is true?
 •	A method must always have one parameter
 •	A method name can begin with a number
 •	A method name must be unique within a class
 •	A method name does not need to be unique if parameters differ
-________________________________________
+
 9. Which of the following is a restriction of constructors?
 •	Constructor names must be capitalized
 •	Constructors must take only one parameter
 •	Constructors must have the same name as the class
 •	Constructors must return a value
-________________________________________
+
 10. What best describes polymorphism?
 •	The ability to define only one version of a method
 •	The ability to define multiple versions of the same method in the same class
 •	The ability to define methods with different names that do the same processing
 •	The ability to define the same method name in different classes
-________________________________________
+
 11. What does it mean when a class is marked abstract?
 •	The class cannot be instantiated
 •	The class can only have static methods
 •	The class cannot be extended
 •	The class cannot contain methods
-________________________________________
+
 12. What does it mean if a method is marked private?
 •	It can be called by subclasses
 •	It can be called from any class
 •	It can only be called within the same class
 •	It can never be called
-________________________________________
+
 13. What keyword is used to implement inheritance in Java?
 •	constructor
 •	extends
 •	protected
 •	implements
-________________________________________
+
 14. What is the purpose of an interface in Java?
 •	Declares methods without implementations
 •	Defines a class that cannot be extended
 •	Handles file operations
 •	Defines private attributes
-________________________________________
+
 15. What keyword identifies that a class implements an interface?
 •	extends
 •	implements
 •	static
 •	abstract
-________________________________________
+
 16. Which keyword allows default method implementation inside an interface?
 •	default
 •	abstract
 •	static
 •	public
-________________________________________
+
 17. What mechanism is used in the following code?
 orders.sort((a, b) -> a.amount() - b.amount());
 •	Lambda expression
 •	Interface declaration
 •	Full class implementation
 •	Anonymous inner class
-________________________________________
+
 18. What keyword is used to declare an interface?
 •	class
 •	interface
 •	extends
 •	implements
-________________________________________
+
 19. How does an interface inherit from another interface?
 •	Using implements
 •	Using extends
 •	Interfaces cannot inherit
 •	By attribute declaration
-________________________________________
+
 20. Which of the following is NOT a valid Javadoc tag?
 •	@print
 •	@return
 •	@see
 •	@param
-________________________________________
+
 21. What is the purpose of Javadoc comments?
 •	Debug programs automatically
 •	Perform JUnit testing
 •	Generate documentation
 •	Check syntax
-________________________________________
+
 22. Why is correct indentation important?
 •	Prevent understanding
 •	Improve readability and debugging
 •	Increase speed
 •	Separate variables
-________________________________________
+
 23. Which is a valid Java class name?
 •	Age
 •	Person
 •	person
 •	getAge
-________________________________________
+
 24. Which is a valid single-line Java comment?
 •	/** comment */
 •	comment
 •	-- comment
 •	// comment
-________________________________________
+
 25. How many commenting styles does Java support?
 •	3
 •	5
 •	1
 •	0
-________________________________________
+
 26. What is a test suite?
 •	List of programmers
 •	Bug list
 •	Test development plan
 •	Collection of tests
-________________________________________
+
 27. What percentage of code should ideally be executed during testing?
 •	100%
 •	0%
 •	90%
 •	50%
-________________________________________
+
 28. What is regression testing?
 •	Automatic test generation
 •	Prevents tests from stopping programs
 •	Prevents tests from changing
 •	Ensures existing functionality still works
-________________________________________
+
 29. What is Test-Driven Development (TDD)?
 •	Tests written before code
 •	Only tests written
 •	Only manual testing
 •	Testing after development
-________________________________________
+
 30. What is the purpose of JUnit?
 •	Automated unit testing
 •	Testing without writing tests
 •	Manual testing
 •	Code integration
-________________________________________
+
 31. Which is NOT a benefit of automated testing?
 •	Regression testing
 •	Independent test development
 •	Automatic software writing
 •	Fast and repeatable testing
-________________________________________
+
 32. Which method returns the number of elements in a collection?
 •	size()
 •	remove()
 •	isEmpty()
 •	clear()
-________________________________________
+
 33. Which statement about Java collections is true?
 •	Only Strings allowed
 •	Can be converted to arrays
 •	Size cannot change
 •	Only numbers allowed
-________________________________________
+
 34. Stack behavior is described as:
 •	FSL
 •	FIFO
 •	LIFO
 •	LILO
-________________________________________
+
 35. Purpose of collection classes?
 •	Prevent storage
 •	User login management
 •	Store multiple values
 •	Calculate totals
-________________________________________
+
 36. Which is NOT a Java collection type?
 •	List
 •	Store
 •	Set
 •	Stack
-________________________________________
+
 37. Queue behavior is:
 •	FIFO
 •	LSF
 •	LIFO
 •	LILO
-________________________________________
+
 38. Are Set elements ordered?
 •	Sometimes
 •	OS dependent
 •	Always
 •	Never
-________________________________________
+
 39. What is the value type in this Map?
 Map<String, Double> scores;
 •	String
 •	Double
 •	Float
 •	Integer
-________________________________________
+
 40. Purpose of Map collections?
 •	Store lists
 •	Store directions
 •	Store key-value pairs
 •	Convert arrays
-________________________________________
+
 41. Difference between List and Set?
 •	List stores more
 •	No difference
 •	Set disallows duplicates
 •	List disallows duplicates
-________________________________________
+
 42. TreeSet uses which structure?
 •	Linked list
 •	Binary tree
 •	Array
 •	Hash table
-________________________________________
+
 43. Difference between HashSet and LinkedHashSet?
 •	HashSet preserves order
 •	Type restriction
 •	No difference
 •	LinkedHashSet preserves insertion order
-________________________________________
+
 44. Which Big-O is least efficient?
 •	O(n²)
 •	O(n)
 •	O(log n)
 •	O(1)
-________________________________________
+
 45. Which Big-O is most efficient?
 •	O(1)
 •	O(n²)
 •	O(n log n)
 •	O(log n)
-________________________________________
+
 46. Which construct gives O(n²)?
 •	Array access
 •	Linear search
 •	Single loop
 •	Nested loop
-________________________________________
+
 47. Which statement about sorting is true?
 •	Custom Comparator allowed
 •	Only Lists sortable
 •	Only Strings sortable
 •	Only numbers sortable
-________________________________________
+
 48. Time vs Space complexity?
 •	Time = execution, Space = memory
 •	Time = writing, Space = programmers
 •	Same meaning
 •	Reversed meaning
-________________________________________
+
 49. Worst search performance?
 •	Hash table
 •	Binary tree
 •	Linked list
 •	Same performance
-________________________________________
+
 50. Which is NOT a Java Stream source?
 •	Collection
 •	File
 •	Array
 •	Terminal method
-________________________________________
-Additional Questions (51–80)
+
 51. Which keyword prevents inheritance?
 •	final
 •	static
 •	private
 •	protected
+
 52. Which exception must be handled at compile time?
 •	RuntimeException
 •	IOException
 •	NullPointerException
 •	ArithmeticException
+
 53. Which keyword creates an object?
 •	class
 •	new
 •	this
 •	static
+
 54. Which collection allows duplicate elements?
 •	Set
 •	Map
 •	List
 •	TreeSet
+
 55. Which interface supports FIFO behavior?
 •	Set
 •	List
 •	Queue
 •	Map
+
 56. Which method removes all elements from a collection?
 •	clear()
 •	delete()
 •	removeAll()
 •	erase()
+
 57. Which keyword refers to the current object?
 •	this
 •	super
 •	self
 •	current
+
 58. Which operator compares object references?
 •	equals()
 •	==
 •	compare()
 •	instanceof
+
 59. Which keyword is used for method overriding rules?
 •	final
 •	static
 •	private
 •	abstract
+
 60. Which collection allows fast key-based lookup?
 •	List
 •	Set
 •	Map
 •	Queue
+
 61. Which access level is the most restrictive?
 •	public
 •	protected
 •	default
 •	private
-62. Which Java feature supports “write once, run anywhere”?
+
+62. Which Java feature supports "write once, run anywhere"?
 •	JVM
 •	JDK
 •	JRE
 •	Bytecode
+
 63. Which loop executes at least once?
 •	for
 •	while
 •	do-while
 •	foreach
+
 64. Which keyword is used to handle exceptions?
 •	throw
 •	throws
 •	try-catch
 •	all of the above
+
 65. Which keyword sends an exception to caller?
 •	try
 •	catch
 •	throw
 •	throws
+
 66. Which Java type stores true/false?
 •	int
 •	char
 •	boolean
 •	byte
+
 67. Which collection does NOT allow null keys?
 •	HashMap
 •	TreeMap
 •	LinkedHashMap
 •	Map
-68. Which sorting algorithm is used by Java’s TimSort?
+
+68. Which sorting algorithm is used by Java's TimSort?
 •	Merge + Insertion
 •	Quick + Heap
 •	Bubble + Selection
 •	Radix
+
 69. Which keyword allows a method to be overridden?
 •	final
 •	private
 •	static
 •	public
+
 70. Which method compares string content?
 •	==
 •	equals()
 •	compareTo()
 •	matches()
+
 71. Which collection maintains sorted order?
 •	HashSet
 •	TreeSet
 •	ArrayList
 •	LinkedList
+
 72. Which keyword loads a package?
 •	include
 •	using
 •	import
 •	package
+
 73. Which statement creates an array?
 •	int a;
 •	int[] a = new int[5];
 •	int a = {};
 •	array a[5];
+
 74. Which keyword defines constants?
 •	final
 •	static
 •	const
 •	immutable
+
 75. Which Java version introduced lambda expressions?
 •	Java 6
 •	Java 7
 •	Java 8
 •	Java 11
+
 76. Which collection allows random access?
 •	LinkedList
 •	ArrayList
 •	Queue
 •	Set
+
 77. Which method converts stream to list?
 •	collect()
 •	map()
 •	filter()
 •	forEach()
+
 78. Which keyword stops loop execution?
 •	stop
 •	exit
 •	break
 •	end
+
 79. Which Java feature supports multiple inheritance?
 •	Classes
 •	Interfaces
 •	Abstract classes
 •	Constructors
+
 80. Which keyword defines package scope?
 •	private
 •	protected
 •	default (no keyword)
-•	public
+•	public`;
 
+        function parseQuestions(text) {
+            const questions = [];
+            const lines = text.split('\n').map(l => l.trim()).filter(l => l);
+            
+            let currentQ = null;
+            let questionText = '';
+            let options = [];
+            
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                
+                // Check if it's a question number (starts with number followed by period)
+                if (/^\d+\./.test(line)) {
+                    if (currentQ !== null) {
+                        questions.push({
+                            number: currentQ,
+                            text: questionText.trim(),
+                            options: options
+                        });
+                    }
+                    const match = line.match(/^(\d+)\.\s*(.+)$/);
+                    if (match) {
+                        currentQ = parseInt(match[1]);
+                        questionText = match[2];
+                        options = [];
+                    }
+                }
+                else if (line.startsWith('•')) {
+                    options.push(line.substring(1).trim());
+                }
+                else if (currentQ !== null && line && !line.startsWith('•')) {
+                    questionText += ' ' + line;
+                }
+            }
+            
+            if (currentQ !== null) {
+                questions.push({
+                    number: currentQ,
+                    text: questionText.trim(),
+                    options: options
+                });
+            }
+            
+            return questions;
+        }
 
-    </p>
+        const correctAnswers = {
+            1: "They enforce visibility rules for attributes and methods",
+            2: "It restricts access to within the same class only",
+            3: "while",
+            4: "a,b,c,d,e",
+            5: "void",
+            6: "int",
+            7: "The class that extends another class",
+            8: "A method name does not need to be unique if parameters differ",
+            9: "Constructors must have the same name as the class",
+            10: "The ability to define the same method name in different classes",
+            11: "The class cannot be instantiated",
+            12: "It can only be called within the same class",
+            13: "extends",
+            14: "Declares methods without implementations",
+            15: "implements",
+            16: "default",
+            17: "Lambda expression",
+            18: "interface",
+            19: "Using extends",
+            20: "@print",
+            21: "Generate documentation",
+            22: "Improve readability and debugging",
+            23: "Person",
+            24: "// comment",
+            25: "3",
+            26: "Collection of tests",
+            27: "100%",
+            28: "Ensures existing functionality still works",
+            29: "Tests written before code",
+            30: "Automated unit testing",
+            31: "Automatic software writing",
+            32: "size()",
+            33: "Can be converted to arrays",
+            34: "LIFO",
+            35: "Store multiple values",
+            36: "Store",
+            37: "FIFO",
+            38: "Never",
+            39: "Double",
+            40: "Store key-value pairs",
+            41: "Set disallows duplicates",
+            42: "Binary tree",
+            43: "LinkedHashSet preserves insertion order",
+            44: "O(n²)",
+            45: "O(1)",
+            46: "Nested loop",
+            47: "Custom Comparator allowed",
+            48: "Time = execution, Space = memory",
+            49: "Linked list",
+            50: "Terminal method",
+            51: "final",
+            52: "IOException",
+            53: "new",
+            54: "List",
+            55: "Queue",
+            56: "clear()",
+            57: "this",
+            58: "==",
+            59: "final",
+            60: "Map",
+            61: "private",
+            62: "Bytecode",
+            63: "do-while",
+            64: "try-catch",
+            65: "throws",
+            66: "boolean",
+            67: "TreeMap",
+            68: "Merge + Insertion",
+            69: "public",
+            70: "equals()",
+            71: "TreeSet",
+            72: "import",
+            73: "int[] a = new int[5];",
+            74: "final",
+            75: "Java 8",
+            76: "ArrayList",
+            77: "collect()",
+            78: "break",
+            79: "Interfaces",
+            80: "default (no keyword)"
+        };
+
+        function renderQuestions() {
+            const questions = parseQuestions(questionsData);
+            const container = document.getElementById('qa-container');
+            
+            questions.forEach(q => {
+                const qaPair = document.createElement('div');
+                qaPair.className = 'qa-pair';
+                
+                const qNumber = document.createElement('div');
+                qNumber.className = 'q-number';
+                qNumber.textContent = `Q${q.number}.`;
+                
+                const qText = document.createElement('div');
+                qText.className = 'question-text';
+                qText.textContent = q.text;
+                
+                const answerLabel = document.createElement('div');
+                answerLabel.className = 'answer-label';
+                answerLabel.textContent = 'Answer:';
+                
+                const aText = document.createElement('div');
+                aText.className = 'answer-text';
+                aText.textContent = correctAnswers[q.number] || '';
+                
+                qaPair.appendChild(qNumber);
+                qaPair.appendChild(qText);
+                qaPair.appendChild(answerLabel);
+                qaPair.appendChild(aText);
+                
+                container.appendChild(qaPair);
+            });
+        }
+
+        renderQuestions();
+    </script>
 </body>
 </html>
